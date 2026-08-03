@@ -3,6 +3,8 @@ import org.gradle.kotlin.dsl.testImplementation
 plugins {
     `kotlin-dsl`
     `maven-publish`
+    alias(libs.plugins.ktlint)
+    alias(libs.plugins.detekt)
 }
 
 group = "mr.liks.plugins"
@@ -27,6 +29,12 @@ gradlePlugin {
         id = "mr.liks.license-inspector"
         implementationClass = "mr.liks.licenseinspector.LicenseInspectorPlugin"
     }
+}
+
+ktlint {
+    verbose.set(true)
+    android.set(true)
+    outputToConsole.set(true)
 }
 
 val functionalTest by sourceSets.creating {

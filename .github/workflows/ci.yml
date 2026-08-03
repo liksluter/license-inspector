@@ -24,9 +24,6 @@ jobs:
       - name: Run Static Analysis
         run: ./gradlew ktlintCheck detekt
 
-      - name: Make gradlew executable
-        run: chmod +x gradlew
-
       - name: Compile Code
         run: ./gradlew assemble
 
