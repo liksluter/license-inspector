@@ -1,8 +1,8 @@
 [versions]
 androidGradle = "9.3.0"
 kotlin = "2.3.21"
-ktLint = "12.1.1"
-detekt = "1.23.6"
+ktLint = "14.2.0"
+detekt = "1.23.8"
 
 [libraries]
 android-build-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradle" }
