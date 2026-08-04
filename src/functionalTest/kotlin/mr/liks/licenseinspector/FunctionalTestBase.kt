@@ -18,7 +18,7 @@ abstract class FunctionalTestBase {
         group: String,
         artifact: String,
         version: String,
-        pomContent: String
+        pomContent: String,
     ) {
         val artifactDir = projectPath
             .resolve("maven-repo")
@@ -46,7 +46,7 @@ abstract class FunctionalTestBase {
     /** Запускает Gradle с заданными аргументами. */
     protected fun runGradle(
         vararg args: String,
-        expectFailure: Boolean = false
+        expectFailure: Boolean = false,
     ): BuildResult =
         GradleRunner.create()
             .withProjectDir(projectPath.toFile())

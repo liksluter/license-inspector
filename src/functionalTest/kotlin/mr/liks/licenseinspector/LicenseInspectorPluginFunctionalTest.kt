@@ -1,3 +1,12 @@
+@file:Suppress(
+    "ktlint:standard:no-trailing-spaces",
+    "ktlint:standard:string-template-indent",
+    "ktlint:standard:indent",
+    "ktlint:standard:multiline-if-else",
+    "ktlint:standard:if-else-wrapping",
+    "ktlint:standard:if-else-bracing",
+)
+
 package mr.liks.licenseinspector
 
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -7,7 +16,7 @@ import java.nio.file.Path
 import kotlin.io.path.exists
 
 /** Тесты на [LicenseInspectorPlugin] */
-class LicenseInspectorPluginFunctionalTest: FunctionalTestBase() {
+class LicenseInspectorPluginFunctionalTest : FunctionalTestBase() {
     private lateinit var androidTestProject: AndroidTestProject
 
     @BeforeEach
@@ -126,12 +135,12 @@ class LicenseInspectorPluginFunctionalTest: FunctionalTestBase() {
     private fun createDependencyBlock(
         group: String = DEPENDENCY_GROUP,
         artifact: String = DEPENDENCY_ARTIFACT,
-        version: String = DEPENDENCY_VERSION
+        version: String = DEPENDENCY_VERSION,
     ) = """implementation("$group:$artifact:$version")"""
 
     private fun createPom(
         licenseName: String? = null,
-        licenseUrl: String? = null
+        licenseUrl: String? = null,
     ): String {
         val licensesBlock = if (licenseName != null || licenseUrl != null) {
             """

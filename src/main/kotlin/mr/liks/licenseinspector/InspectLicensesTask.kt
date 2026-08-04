@@ -12,12 +12,16 @@ import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.PathSensitive
 import org.gradle.api.tasks.PathSensitivity
 import org.gradle.api.tasks.TaskAction
+import org.gradle.work.DisableCachingByDefault
 import java.io.File
 import java.util.Locale
 import javax.xml.parsers.DocumentBuilderFactory
+import javax.xml.parsers.ParserConfigurationException
 
 /** Таска проверяющая лицензии в POM файлах */
-abstract class InspectLicensesTask: DefaultTask() {
+@Suppress("TooGenericExceptionCaught", "")
+@DisableCachingByDefault(because = "Проверяет лицензии зависимостей в реальном времени")
+abstract class InspectLicensesTask : DefaultTask() {
     /** Коллекция POM файлов */
     @get:InputFiles
     @get:PathSensitive(PathSensitivity.RELATIVE)
@@ -88,6 +92,7 @@ abstract class InspectLicensesTask: DefaultTask() {
         }
     }
 
+    @Suppress("NestedBlockDepth")
     private fun extractLicenseTokensFromPom(pomFile: File): List<String> {
         val licenseTokens = mutableListOf<String>()
 
@@ -95,8 +100,8 @@ abstract class InspectLicensesTask: DefaultTask() {
             val documentBuilderFactory = DocumentBuilderFactory.newInstance()
             try {
                 documentBuilderFactory.setFeature(DISALLOW_DOCTYPE_DECL_FEATURE, true)
-            } catch (e: Exception) {
-                e.printStackTrace()
+            } catch (ex: ParserConfigurationException) {
+                logger.error("$TAG $ex")
             }
 
             val documentBuilder = documentBuilderFactory.newDocumentBuilder()
@@ -130,6 +135,7 @@ abstract class InspectLicensesTask: DefaultTask() {
     }
 
     private companion object {
+        const val TAG = "InspectLicensesTask"
         const val POM_FILE_EXT = ".pom"
         const val POM_FILES_COUNT = "[License inspector] POM files count: %d"
         const val LICENSE_NOT_FOUND = "%s - The license is not specified in the POM file"
