@@ -7,12 +7,30 @@ plugins {
     alias(libs.plugins.detekt)
 }
 
-group = "mr.liks.plugins"
+group = "com.github.liksluter"
 version = "1.0.0"
 
 repositories {
     google()
     mavenCentral()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("LicenseInspector") {
+            from(components["java"])
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://github.com/liksluter/license-inspector")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
 
 dependencies {
