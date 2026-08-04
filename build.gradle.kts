@@ -24,7 +24,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://github.com/liksluter/license-inspector")
+            url = uri("https://maven.pkg.github.com/liksluter/license-inspector")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
