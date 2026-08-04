@@ -12,6 +12,7 @@ import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.PathSensitive
 import org.gradle.api.tasks.PathSensitivity
 import org.gradle.api.tasks.TaskAction
+import org.gradle.work.DisableCachingByDefault
 import java.io.File
 import java.util.Locale
 import javax.xml.parsers.DocumentBuilderFactory
@@ -19,6 +20,7 @@ import javax.xml.parsers.ParserConfigurationException
 
 /** Таска проверяющая лицензии в POM файлах */
 @Suppress("TooGenericExceptionCaught", "")
+@DisableCachingByDefault(because = "Проверяет лицензии зависимостей в реальном времени")
 abstract class InspectLicensesTask : DefaultTask() {
     /** Коллекция POM файлов */
     @get:InputFiles
