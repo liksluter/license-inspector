@@ -15,7 +15,7 @@ import java.util.Locale
  * * `allowedLicenses` список разрешенных лицензий, значение по-умолчанию [allowedLicensesDefaultList]
  * * `ignoredDependencies` список исключаемых из проверки зависимостей
  */
-class LicenseInspectorPlugin: Plugin<Project> {
+class LicenseInspectorPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         val extension = project.extensions.create(PLUGIN_EXT_NAME, LicenseInspectorExtension::class.java).apply {
             allowedLicenses.set(allowedLicensesDefaultList)

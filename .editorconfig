@@ -3,3 +3,5 @@ ktlint_standard_no-wildcard-imports = disabled
 ktlint_standard_chain-method-continuation = disabled
 ktlint_standard_multiline-expression-wrapping = disabled
 ktlint_standard_final-newline = disabled
+ktlint_standard_trailing-comma-on-call-site = disabled
+ktlint_standard_function-signature = disabled

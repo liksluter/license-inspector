@@ -13,7 +13,7 @@ class AndroidTestProject(
     private val packageName: String = "com.test.app",
     private val dependenciesBlock: String,
     private val repositoriesBlock: String = "",
-    private var pluginExtBlock: String = ""
+    private var pluginExtBlock: String = "",
 ) {
     init {
         writeBuildFile()

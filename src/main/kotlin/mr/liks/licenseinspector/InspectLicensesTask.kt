@@ -19,7 +19,7 @@ import javax.xml.parsers.ParserConfigurationException
 
 /** Таска проверяющая лицензии в POM файлах */
 @Suppress("TooGenericExceptionCaught", "")
-abstract class InspectLicensesTask: DefaultTask() {
+abstract class InspectLicensesTask : DefaultTask() {
     /** Коллекция POM файлов */
     @get:InputFiles
     @get:PathSensitive(PathSensitivity.RELATIVE)
