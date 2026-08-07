@@ -44,6 +44,16 @@ gradlePlugin {
     }
 }
 
+afterEvaluate {
+    publishing.publications.forEach { publication ->
+        if (publication is MavenPublication && publication.name == "licenseInspectorMaven") {
+            if (publication.artifacts.none { it.extension == "jar" && it.classifier.isNullOrEmpty() }) {
+                publication.from(components["java"])
+            }
+        }
+    }
+}
+
 ktlint {
     verbose.set(true)
     android.set(true)
