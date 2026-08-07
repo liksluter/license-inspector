@@ -39,3 +39,11 @@ jobs:
 
       - name: Run All Tests
         run: ./gradlew test check
+
+      - name: Upload Functional Test Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: functional-test-report
+          path: build/reports/tests/functionalTest/
+          retention-days: 7
