@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.liksluter"
-version = "1.0.0"
+version = "1.0.0-SNAPSHOT"
 
 repositories {
     google()
@@ -16,11 +16,6 @@ repositories {
 }
 
 publishing {
-    publications {
-        create<MavenPublication>("LicenseInspector") {
-            from(components["java"])
-        }
-    }
     repositories {
         maven {
             name = "GitHubPackages"
