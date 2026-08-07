@@ -44,16 +44,6 @@ gradlePlugin {
     }
 }
 
-afterEvaluate {
-    publishing.publications.forEach { publication ->
-        if (publication is MavenPublication && publication.name == "pluginMaven") {
-            if (publication.artifacts.none { it.extension == "jar" && it.classifier.isNullOrEmpty() }) {
-                publication.from(components["java"])
-            }
-        }
-    }
-}
-
 ktlint {
     verbose.set(true)
     android.set(true)
@@ -81,7 +71,11 @@ tasks.named("check") {
 }
 
 tasks.named("functionalTest") {
-    dependsOn("publishToMavenLocal")
+    dependsOn(
+        ":publishLicenseInspectorPluginMarkerMavenPublicationToMavenLocal",
+        ":publishPluginMavenPublicationToMavenLocal",
+        ":publishToMavenLocal"
+    )
 }
 
 tasks.named<Test>("test") {
