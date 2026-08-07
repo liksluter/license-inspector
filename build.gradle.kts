@@ -71,7 +71,11 @@ tasks.named("check") {
 }
 
 tasks.named("functionalTest") {
-    dependsOn("publishToMavenLocal")
+    dependsOn(
+        ":publishLicenseInspectorPluginMarkerMavenPublicationToMavenLocal",
+        ":publishPluginMavenPublicationToMavenLocal",
+        ":publishToMavenLocal"
+    )
 }
 
 tasks.named<Test>("test") {
